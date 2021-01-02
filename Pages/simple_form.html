@@ -17,6 +17,7 @@
         <div>
             <label for="pwd">password input type: </label>
             <input type="password" id="pwd" name="pwd" required>
+            <error-output class="pwd-error" for="pwd"></error-output>
         </div>
         <div>
             <label for="email">email input type: </label>
@@ -94,6 +95,17 @@
                 telError.textContent = "";
             }
             else telError.textContent = "Incorrect tel!!";
+        });
+
+        const pwd = document.querySelector('#pwd');
+        const pwdError = document.querySelector('.pwd-error');
+        pwd.addEventListener('input', function() {
+            let telRegex = RegExp('^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=\\.~`])(.){8,}$');
+            if(telRegex.test(pwd.value))
+            {
+                pwdError.textContent = "";
+            }
+            else pwdError.textContent = "Incorrect pwd!!";
         });
     </script>
 </body>
